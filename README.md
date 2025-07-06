@@ -4,7 +4,7 @@
 ![Node](https://img.shields.io/badge/node-%3E%3D%2014.0.0-brightgreen.svg)
 ![React](https://img.shields.io/badge/react-18.2.0-blue.svg)
 ![Express](https://img.shields.io/badge/express-4.18.0-green.svg)
-![MySQL](https://img.shields.io/badge/mysql-8.0-orange.svg)
+![PostgreSQL](https://img.shields.io/badge/postgresql-15-blue.svg)
 
 Une application bancaire moderne et sécurisée développée avec React.js et Node.js, offrant une expérience utilisateur complète pour la gestion de comptes bancaires.
 
@@ -20,8 +20,6 @@ Une application bancaire moderne et sécurisée développée avec React.js et No
 - [🔐 Sécurité](#-sécurité)
 - [📱 Responsive Design](#-responsive-design)
 - [🎨 Thèmes](#-thèmes)
-- [🧪 Tests](#-tests)
-- [📚 Documentation API](#-documentation-api)
 - [🤝 Contribution](#-contribution)
 - [📄 Licence](#-licence)
 
@@ -66,7 +64,7 @@ Une application bancaire moderne et sécurisée développée avec React.js et No
 - **Node.js** - Environnement d'exécution JavaScript
 - **Express.js 4.18.0** - Framework web
 - **Sequelize** - ORM pour base de données
-- **MySQL** - Base de données relationnelle
+- **PostgreSQL** - Base de données relationnelle
 - **JWT** - Authentification par tokens
 - **bcrypt** - Hachage des mots de passe
 - **Stripe** - Traitement des paiements
@@ -140,7 +138,7 @@ Banque/
 ### Prérequis
 - **Node.js** (version 14 ou supérieure)
 - **npm** ou **yarn**
-- **MySQL** (version 8.0 ou supérieure)
+- **PostgreSQL ** (version 15 ou supérieure)
 - **Git**
 
 ### 1. Cloner le projet
@@ -177,34 +175,9 @@ mysql -u root -p banque_db < script.sql
 mysql -u root -p banque_db < data.sql
 ```
 
-### 2. Variables d'Environnement Backend
-Créer un fichier `.env` dans le dossier `backend-banque/` :
-```env
-# Base de données
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=votre_mot_de_passe
-DB_NAME=banque_db
-DB_PORT=3306
 
-# JWT
-JWT_SECRET=votre_secret_jwt_super_securise
 
-# Stripe
-STRIPE_SECRET_KEY=sk_test_votre_cle_stripe
-STRIPE_PUBLISHABLE_KEY=pk_test_votre_cle_stripe
 
-# Serveur
-PORT=3001
-NODE_ENV=development
-```
-
-### 3. Configuration Frontend
-Créer un fichier `.env` dans le dossier `frontend-banque/` :
-```env
-REACT_APP_API_URL=http://localhost:3001
-REACT_APP_STRIPE_PUBLISHABLE_KEY=pk_test_votre_cle_stripe
-```
 
 ## 🏃‍♂️ Démarrage
 
@@ -222,19 +195,7 @@ npm start
 # L'application démarre sur http://localhost:3000
 ```
 
-### 3. Accès aux Interfaces
 
-#### 🔗 Interface Client
-- **URL** : `http://localhost:3000/client/login`
-- **Compte de test** :
-  - Email : `client@test.com`
-  - Mot de passe : `password123`
-
-#### 🔗 Interface Administrateur
-- **URL** : `http://localhost:3000/admin/login`
-- **Compte de test** :
-  - Email : `admin@test.com`
-  - Mot de passe : `admin123`
 
 ## 👥 Interfaces Utilisateur
 
@@ -323,24 +284,7 @@ L'application est entièrement responsive et optimisée pour :
 - Mémorisation des préférences
 - Animation des changements
 
-## 🧪 Tests
 
-### Tests Backend
-```bash
-cd backend-banque
-npm test
-```
-
-### Tests Frontend
-```bash
-cd frontend-banque
-npm test
-```
-
-### Tests d'Intégration
-```bash
-npm run test:integration
-```
 
 ## 📚 Documentation API
 
@@ -368,107 +312,8 @@ npm run test:integration
 - `POST /virements/externe` - Virement externe
 - `GET /virements/historique` - Historique des virements
 
-### Format des Réponses
-```json
-{
-  "success": true,
-  "data": { ... },
-  "message": "Opération réussie",
-  "timestamp": "2025-07-06T10:30:00Z"
-}
-```
 
-## 🚀 Déploiement
 
-### Variables de Production
-```env
-NODE_ENV=production
-DB_HOST=votre_host_production
-JWT_SECRET=secret_production_tres_securise
-STRIPE_SECRET_KEY=sk_live_votre_cle_stripe_live
-```
-
-### Build de Production
-```bash
-# Backend
-cd backend-banque
-npm run build
-
-# Frontend
-cd frontend-banque
-npm run build
-```
-
-### Serveurs Recommandés
-- **Frontend** : Vercel, Netlify, AWS S3
-- **Backend** : Heroku, Digital Ocean, AWS EC2
-- **Base de données** : AWS RDS, Digital Ocean Managed Database
-
-## 🤝 Contribution
-
-1. Fork le projet
-2. Créer une branche feature (`git checkout -b feature/AmazingFeature`)
-3. Commit les changements (`git commit -m 'Add some AmazingFeature'`)
-4. Push vers la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrir une Pull Request
-
-### Guidelines de Contribution
-- Suivre les conventions de nommage
-- Écrire des tests pour les nouvelles fonctionnalités
-- Mettre à jour la documentation
-- Respecter le style de code existant
-
-## 📊 Métriques et Performance
-
-### Performance Frontend
-- **Lighthouse Score** : 95+
-- **First Contentful Paint** : < 1.5s
-- **Time to Interactive** : < 3s
-- **Bundle Size** : < 500KB gzipped
-
-### Performance Backend
-- **Response Time** : < 200ms
-- **Throughput** : 1000+ req/s
-- **Uptime** : 99.9%
-- **Memory Usage** : < 512MB
-
-## 🔄 Roadmap
-
-### Version 1.1.0
-- [ ] Notifications push
-- [ ] Export PDF des relevés
-- [ ] Chat support client
-- [ ] API publique pour développeurs
-
-### Version 1.2.0
-- [ ] Application mobile (React Native)
-- [ ] Intelligence artificielle pour conseils financiers
-- [ ] Intégration crypto-monnaies
-- [ ] Multi-langues
-
-### Version 2.0.0
-- [ ] Microservices architecture
-- [ ] Blockchain pour la sécurité
-- [ ] Analyse prédictive
-- [ ] IoT integrations
-
-## 🐛 Bugs Connus
-
-- [ ] Rechargement Stripe en mode sombre nécessite un refresh
-- [ ] Animation sidebar mobile sur iOS Safari
-- [ ] Performance graphiques sur Internet Explorer (non supporté)
-
-## 📞 Support
-
-Pour toute question ou problème :
-- 📧 **Email** : support@banqueonline.com
-- 🐛 **Issues** : [GitHub Issues](https://github.com/votre-username/banque-online/issues)
-- 📚 **Documentation** : [Wiki du projet](https://github.com/votre-username/banque-online/wiki)
-- 💬 **Discord** : [Serveur de la communauté](https://discord.gg/banqueonline)
-
-## 👨‍💻 Auteurs
-
-- **Taha** - *Développeur Full-Stack* - [@taha-username](https://github.com/taha-username)
 
 ## 🙏 Remerciements
 
