@@ -1,0 +1,396 @@
+/* Dashboard Admin CSS - Design Moderne et Professionnel */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* Fallback pour les icônes si Font Awesome ne charge pas - seulement si FA n'est pas chargé */
+.icon-fallback {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  text-align: center;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+}
+
+/* Désactiver les icônes de fallback CSS si Font Awesome est chargé */
+body.font-awesome-loaded .fa-university:before,
+body.font-awesome-loaded .fa-chart-line:before,
+body.font-awesome-loaded .fa-users:before,
+body.font-awesome-loaded .fa-piggy-bank:before,
+body.font-awesome-loaded .fa-exchange-alt:before,
+body.font-awesome-loaded .fa-chart-bar:before,
+body.font-awesome-loaded .fa-shield-alt:before,
+body.font-awesome-loaded .fa-cog:before,
+body.font-awesome-loaded .fa-bars:before,
+body.font-awesome-loaded .fa-bell:before,
+body.font-awesome-loaded .fa-clock:before,
+body.font-awesome-loaded .fa-sun:before,
+body.font-awesome-loaded .fa-moon:before,
+body.font-awesome-loaded .fa-user:before,
+body.font-awesome-loaded .fa-user-shield:before,
+body.font-awesome-loaded .fa-sign-out-alt:before,
+body.font-awesome-loaded .fa-user-plus:before,
+body.font-awesome-loaded .fa-credit-card:before,
+body.font-awesome-loaded .fa-money-bill-wave:before,
+body.font-awesome-loaded .fa-file-alt:before,
+body.font-awesome-loaded .fa-download:before,
+body.font-awesome-loaded .fa-coins:before,
+body.font-awesome-loaded .fa-arrow-up:before,
+body.font-awesome-loaded .fa-arrow-down:before,
+body.font-awesome-loaded .fa-code:before,
+body.font-awesome-loaded .fa-server:before {
+  content: none !important;
+}
+
+/* Icônes Unicode de fallback - seulement si Font Awesome n'est pas chargé */
+body:not(.font-awesome-loaded) .fa-university:before,
+body:not(.font-awesome-loaded) .fa-bank:before { content: "🏦"; }
+body:not(.font-awesome-loaded) .fa-chart-line:before { content: "📈"; }
+body:not(.font-awesome-loaded) .fa-users:before { content: "👥"; }
+body:not(.font-awesome-loaded) .fa-piggy-bank:before { content: "🏧"; }
+body:not(.font-awesome-loaded) .fa-exchange-alt:before { content: "💱"; }
+body:not(.font-awesome-loaded) .fa-chart-bar:before { content: "📊"; }
+body:not(.font-awesome-loaded) .fa-shield-alt:before { content: "🛡️"; }
+body:not(.font-awesome-loaded) .fa-cog:before { content: "⚙️"; }
+body:not(.font-awesome-loaded) .fa-bars:before { content: "☰"; }
+body:not(.font-awesome-loaded) .fa-bell:before { content: "🔔"; }
+body:not(.font-awesome-loaded) .fa-clock:before { content: "🕐"; }
+body:not(.font-awesome-loaded) .fa-sun:before { content: "☀️"; }
+body:not(.font-awesome-loaded) .fa-moon:before { content: "🌙"; }
+body:not(.font-awesome-loaded) .fa-user:before { content: "👤"; }
+body:not(.font-awesome-loaded) .fa-user-shield:before { content: "👮"; }
+body:not(.font-awesome-loaded) .fa-sign-out-alt:before { content: "🚪"; }
+body:not(.font-awesome-loaded) .fa-user-plus:before { content: "👤➕"; }
+body:not(.font-awesome-loaded) .fa-credit-card:before { content: "💳"; }
+body:not(.font-awesome-loaded) .fa-money-bill-wave:before { content: "💰"; }
+body:not(.font-awesome-loaded) .fa-file-alt:before { content: "📄"; }
+body:not(.font-awesome-loaded) .fa-download:before { content: "⬇️"; }
+body:not(.font-awesome-loaded) .fa-coins:before { content: "🪙"; }
+body:not(.font-awesome-loaded) .fa-arrow-up:before { content: "↗️"; }
+body:not(.font-awesome-loaded) .fa-arrow-down:before { content: "↘️"; }
+body:not(.font-awesome-loaded) .fa-code:before { content: "💻"; }
+body:not(.font-awesome-loaded) .fa-server:before { content: "🖥️"; }
+
+/* Variables CSS pour les couleurs bancaires */
+:root {
+  --bank-primary: #1e40af;
+  --bank-secondary: #7c3aed;
+  --bank-accent: #059669;
+  --bank-warning: #f59e0b;
+  --bank-error: #dc2626;
+  --bank-success: #10b981;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --shadow-soft: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --gradient-banking: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-success: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  --gradient-warning: linear-gradient(135deg, #ff6b6b 0%, #ffa726 100%);
+}
+
+/* Animations personnalisées */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Classes utilitaires pour les animations */
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* Effet de verre moderne */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-effect-dark {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Cartes avec effet hover amélioré */
+.stat-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.stat-card:hover::before {
+  left: 100%;
+}
+
+.stat-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Boutons avec effets modernes */
+.btn-modern {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-modern::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+}
+
+.btn-modern:hover::before {
+  width: 200%;
+  height: 200%;
+}
+
+.btn-modern:active {
+  transform: scale(0.98);
+}
+
+/* Navigation sidebar améliorée */
+.nav-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--bank-primary), var(--bank-secondary));
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.nav-item:hover::after,
+.nav-item.active::after {
+  width: 80%;
+}
+
+/* Graphiques et indicateurs */
+.chart-container {
+  position: relative;
+}
+
+.chart-bar {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chart-bar:hover {
+  transform: scaleY(1.1);
+  filter: brightness(1.2);
+}
+
+/* Scrollbar personnalisée */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--bank-primary), var(--bank-secondary));
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #1e3a8a, #6d28d9);
+}
+
+/* Effet de chargement shimmer */
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Responsive amélioré */
+@media (max-width: 768px) {
+  .stat-card {
+    margin-bottom: 1rem;
+  }
+  
+  .glass-effect,
+  .glass-effect-dark {
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+  }
+}
+
+/* Mode sombre amélioré */
+.dark .stat-card {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(71, 85, 105, 0.3);
+}
+
+.dark .glass-effect {
+  background: rgba(15, 23, 42, 0.3);
+  border: 1px solid rgba(71, 85, 105, 0.3);
+}
+
+/* Tooltips modernes */
+.tooltip {
+  position: relative;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+  z-index: 1000;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+/* Indicateurs de statut */
+.status-indicator {
+  position: relative;
+}
+
+.status-indicator::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse-soft 2s infinite;
+}
+
+.status-online::before {
+  background: rgba(16, 185, 129, 0.3);
+}
+
+.status-warning::before {
+  background: rgba(245, 158, 11, 0.3);
+}
+
+.status-error::before {
+  background: rgba(220, 38, 38, 0.3);
+}
+
+/* Transitions fluides pour tous les éléments interactifs */
+* {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Performance optimizations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .stat-card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+}
